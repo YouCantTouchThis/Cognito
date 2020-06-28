@@ -1,6 +1,7 @@
 from pynput import keyboard 
 import time
 from run import analysis
+from sendemail import send_p, send_a
 
 
 def k_press():
@@ -16,7 +17,7 @@ def k_press():
         
 
 
-    LOAD_THRESH = 700
+    LOAD_THRESH = 1
 
     def load_to_csv(keys, fname='presses.csv'):
         with open(fname, 'a') as f:
@@ -40,9 +41,15 @@ def k_press():
                 k = k.replace('backspace', 'BackSpace')
                 k = f.write(f'"{k}",{hold_time},{round(hold_time+release_time, 4)},{release_time}\n')
         
-        a = analysis()
-        if a:
-            
+            a = analysis()
+            if a:
+                send_p()
+            else:
+                send_a()
+
+            f.truncate(0)
+        
+
 
 
 
