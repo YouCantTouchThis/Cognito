@@ -1,4 +1,4 @@
-# Cognito: The future of Parkinsons Detection
+# Cognito: The future of Parkinsons Detection 
 
 ## Note 1
 
